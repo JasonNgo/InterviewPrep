@@ -16,7 +16,6 @@
 // 3. Compare the size of the string with the size of the set. If equal than the string uses all unique characters.
 
 public func isUniqueWithSet(testString: String) -> Bool {
-    
     // ensure the string isn't empty
     // returns true since a string with no characters still has only unique characters
     guard !testString.isEmpty else { return true }
@@ -43,7 +42,6 @@ public func isUniqueWithSet(testString: String) -> Bool {
 // 3. If at anytime we check for a flag and it's already marked true than we can return false
 
 // Assume we're using ASCII encoding.
-
 // Extend string and character to make accessing ASCII value easier
 extension StringProtocol {
     var ascii: [UInt32] { return unicodeScalars.compactMap { $0.isASCII ? $0.value : nil } }
@@ -54,26 +52,25 @@ extension Character {
 }
 
 public func isUniqueWithArray(testString: String) -> Bool {
-    
     // ensure the string isn't empty
     // returns true since a string with no characters still has only unique characters
     guard !testString.isEmpty else { return true }
-    let encodingCount = 128 // change depending on encoding
     
+    let encodingCount = 128 // change depending on encoding
     var characterFlags = Array(repeating: false, count: encodingCount)
     
     for ASCII in testString.ascii {
         let index = Int(ASCII)
-        print(index)
         
+        // checks for collisions and returns false is collision found
         if characterFlags[index] == false {
             characterFlags[index] = true
         } else {
             return false
-            
         }
     }
     
+    // no collisions found so string is unique
     return true
 }
 

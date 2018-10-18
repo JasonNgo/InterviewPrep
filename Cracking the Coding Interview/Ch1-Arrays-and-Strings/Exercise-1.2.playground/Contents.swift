@@ -1,3 +1,6 @@
+// Jason Ngo
+// Oct 18, 2018
+
 // Check permuation: Given two strings, write a method to determine if one is a
 // permutation of the other.
 
